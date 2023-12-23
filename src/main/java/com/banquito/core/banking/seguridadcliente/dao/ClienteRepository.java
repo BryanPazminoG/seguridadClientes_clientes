@@ -1,6 +1,14 @@
 package com.banquito.core.banking.seguridadcliente.dao;
 
+import com.banquito.core.banking.seguridadcliente.domain.Cliente;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
 @Repository
-public interface ClienteRepository extends CrudRepository<Cliente, Cliente>{
-    List<Cliente> findByCodigoCliente(String COD_CLIENTE);
+public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
+
+    List<Cliente> findByUsuario(String usuario);
+
 }
