@@ -1,40 +1,31 @@
 package com.banquito.core.banking.seguridadcliente.domain;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
-import java.time.Instant;
+import java.util.Date;
 
-@Getter
-@Setter
-@Entity
-@Table(name = "CLIENTE")
 public class Cliente {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COD_CLIENTE", nullable = false)
-    private Integer codCliente;
+    private Long codCliente;
 
-    @Column(name = "USUARIO", nullable = false)
+    @Column(name = "USUARIO", nullable = false, length = 100)
     private String usuario;
 
-    @Column(name = "CONTRASEÑA", nullable = false)
-    private String contraseña;
+    @Column(name = "CONTRASENA", nullable = false, length = 64)
+    private String contrasena;
 
-    @Column(name = "MFA", nullable = false)
+    @Column(name = "MFA", nullable = false, length = 6)
     private String mfa;
 
     @Column(name = "FECHA_CREACION", nullable = false)
-    private Instant fechaCreacion;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaCreacion;
 
-    @Column(name = "FECHA_ULTIMO_CAMBIO", nullable = false)
-    private Instant fechaUltimoCambio;
+    @Column(name = "FECHA_ULTIMA_CREACION", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaUltimaCreacion;
 
-    @Column(name = "ACTIVO", nullable = false)
-    private boolean activo;  // Nuevo campo para indicar si el cliente está activo o inactivo
-
-    @Version
+    @Column(name = "VERSION", nullable = false)
     private Long version;
 }

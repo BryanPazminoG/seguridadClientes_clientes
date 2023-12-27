@@ -1,48 +1,40 @@
 package com.banquito.core.banking.seguridadcliente.controlador;
 
+import com.banquito.core.banking.seguridadcliente.dao.ClienteRepository;
 import com.banquito.core.banking.seguridadcliente.domain.Cliente;
-import com.banquito.core.banking.seguridadcliente.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/clientes")
+@RequestMapping("/clientes")
 public class ClienteController {
-
     @Autowired
-    private ClienteService clienteService;
-
-    @PostMapping
-    public Cliente crearCliente(@RequestBody @Valid Cliente cliente) {
-        return clienteService.crearCliente(cliente);
-    }
+    private ClienteRepository clienteRepository;
 
     @GetMapping
-    public List<Cliente> obtenerTodosLosClientes() {
-        return clienteService.obtenerTodosLosClientes();
+    public List<Cliente> getAllClientes() {
+        return (List<Cliente>) clienteRepository.findAll();
     }
 
-    @GetMapping("/{codigoCliente}")
-    public Optional<Cliente> obtenerClientePorCodigo(@PathVariable Integer codigoCliente) {
-        return clienteService.obtenerClientePorCodigo(codigoCliente);
+    @GetMapping("/{id}")
+    public Cliente getClienteById(@PathVariable Long id) {
+        return clienteRepository.findById(id).orElse(null);
     }
 
-    @GetMapping("/usuario/{usuario}")
-    public List<Cliente> obtenerClientesPorUsuario(@PathVariable String usuario) {
-        return clienteService.obtenerClientesPorUsuario(usuario);
+    @PostMapping
+    public void createCliente(@RequestBody Cliente cliente) {
+        clienteRepository.save(cliente);
     }
 
-    @PutMapping("/{codigoCliente}")
-    public void actualizarCliente(@PathVariable Integer codigoCliente, @RequestBody @Valid Cliente cliente) {
-        clienteService.actualizarCliente(codigoCliente, cliente);
+    @PutMapping("/{id}")
+    public void updateCliente(@PathVariable Long id, @RequestBody Cliente cliente) {
+        clienteRepository.save(cliente);
     }
 
-    @DeleteMapping("/{codigoCliente}")
-    public void eliminarCliente(@PathVariable Integer codigoCliente) {
-        clienteService.eliminarCliente(codigoCliente);
+    @DeleteMapping("/{id}")
+    public void deleteCliente(@PathVariable Long id) {
+        clienteRepository.deleteById(id);
     }
 }

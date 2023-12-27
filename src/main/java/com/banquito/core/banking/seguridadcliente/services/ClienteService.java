@@ -5,69 +5,35 @@ import com.banquito.core.banking.seguridadcliente.domain.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.util.List;
-import java.util.Optional;
-
 @Service
-public class ClienteService {
 
+public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public Cliente crearCliente(Cliente cliente) {
-        // Verificar si el usuario ya existe
-        Cliente existingCliente = (Cliente) clienteRepository.findByUsuario(cliente.getUsuario());
-        if (existingCliente != null) {
-            throw new IllegalArgumentException("El usuario ya existe");
-        }
-        Instant now = Instant.now();
-        cliente.setFechaCreacion(now);
-        cliente.setFechaUltimoCambio(now);
-        cliente.setActivo(true);  // Nuevo cliente se establece como activo
-
-        // Puedes agregar más validaciones y lógica aquí antes de guardar el cliente
-
-        // Guardar el cliente
-        return clienteRepository.save(cliente);
+    public List<Cliente> getAllClientes() {
+        return (List<Cliente>) clienteRepository.findAll();
     }
 
-    public List<Cliente> obtenerTodosLosClientes() {
-        return clienteRepository.findAll();
+    public Cliente getClienteById(Long id) {
+        return clienteRepository.findById(id).orElse(null);
     }
 
-    public Optional<Cliente> obtenerClientePorCodigo(Integer codigoCliente) {
-        return clienteRepository.findById(codigoCliente);
+    public void createCliente(Cliente cliente) {
+        clienteRepository.save(cliente);
     }
 
-    public List<Cliente> obtenerClientesPorUsuario(String usuario) {
-        return clienteRepository.findByUsuario(usuario);
+    public void updateCliente(Cliente cliente) {
+        clienteRepository.save(cliente);
     }
 
-    public void actualizarCliente(Integer codigoCliente, Cliente clienteActualizado) {
-        Optional<Cliente> clienteExistente = clienteRepository.findById(codigoCliente);
-
-        if (clienteExistente.isPresent()) {
-            Cliente cliente = clienteExistente.get();
-
-            // Actualizar los campos necesarios del cliente
-            cliente.setUsuario(clienteActualizado.getUsuario());
-            cliente.setContraseña(clienteActualizado.getContraseña());
-            // Actualiza otros campos según sea necesario
-
-            // Configurar la fecha de último cambio al actualizar
-            cliente.setFechaUltimoCambio(Instant.now());
-
-            // Puedes agregar más validaciones y lógica aquí antes de actualizar el cliente
-
-            // Actualizar el cliente
-            clienteRepository.save(cliente);
-        } else {
-            throw new IllegalArgumentException("Cliente no encontrado");
-        }
+    public void deleteCliente(Long id) {
+        clienteRepository.deleteById(id);
     }
 
-    public void eliminarCliente(Integer codigoCliente) {
-        // Resto del código para eliminar/desactivar el cliente...
+    // Método personalizado para la autenticación del cliente
+    public Cliente authenticateCliente(String usuario, String contrasena) {
+        return clienteRepository.findByUsuarioAndContrasena(usuario, contrasena);
     }
 }
