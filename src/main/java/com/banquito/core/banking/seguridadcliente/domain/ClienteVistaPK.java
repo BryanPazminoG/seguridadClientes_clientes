@@ -1,36 +1,29 @@
 package com.banquito.core.banking.seguridadcliente.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.Column;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Getter
+@Setter
+@Embeddable
 public class ClienteVistaPK implements Serializable {
-
-    private Long codCliente;
-    private Long codVista;
+    @Column(name = "COD_CLIENTE", nullable = false)
+    private Integer codCliente;
+    @Column(name = "COD_VISTA", nullable = false)
+    private Integer codVista;
 
     public ClienteVistaPK() {
     }
-
-    public ClienteVistaPK(Long codCliente, Long codVista) {
+    public ClienteVistaPK(Integer codCliente, Integer codVista) {
         this.codCliente = codCliente;
         this.codVista = codVista;
     }
 
-    public Long getCodCliente() {
-        return codCliente;
-    }
-
-    public void setCodCliente(Long codCliente) {
-        this.codCliente = codCliente;
-    }
-
-    public Long getCodVista() {
-        return codVista;
-    }
-
-    public void setCodVista(Long codVista) {
-        this.codVista = codVista;
-    }
 
     @Override
     public boolean equals(Object o) {

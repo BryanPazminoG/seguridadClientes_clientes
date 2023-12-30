@@ -1,8 +1,14 @@
 package com.banquito.core.banking.seguridadcliente.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Date;
-
+@Table(name="ClienteVista")
+@Entity
+@Getter
+@Setter
 public class ClienteVista {
     @Id
     @ManyToOne
@@ -15,7 +21,7 @@ public class ClienteVista {
     private Vista vista;
 
     @Column(name = "ESTADO", nullable = false)
-    private boolean estado;
+    private String estado;
 
     @Column(name = "INTENTOS_ERROR")
     private Long intentosError;
