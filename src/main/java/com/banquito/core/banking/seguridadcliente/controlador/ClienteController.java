@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
-
+/*
     private  ClienteService clienteService;
 
     public ClienteController(ClienteService clienteService) {
@@ -24,6 +24,6 @@ public class ClienteController {
     public void actualizarMFA(@PathVariable Integer codCliente, @RequestParam String nuevoMFA) {
         clienteService.crearMFA(codCliente, nuevoMFA);
     }
-
+*/
 
 }

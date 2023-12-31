@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 @Service
 
 public class ClienteService {
-
+/*
     private final ClienteRepository clienteRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
+    //private final BCryptPasswordEncoder passwordEncoder;
 
 
     public ClienteService(ClienteRepository clienteRepository, BCryptPasswordEncoder passwordEncoder) {
@@ -46,5 +46,5 @@ public class ClienteService {
         } catch (Exception e) {
             throw new CreacionException("Error al actualizar MFA para el cliente con código: " + codCliente, e);
         }
-    }
+    }*/
 }
