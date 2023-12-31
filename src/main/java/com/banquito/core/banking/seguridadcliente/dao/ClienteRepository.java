@@ -5,5 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ClienteRepository extends CrudRepository<Cliente, Integer> {
 
-    Cliente findByUsuarioAndContrasena(String usuario, String contrasena);
+    Cliente findByUsuario(String usuario);
+    Cliente findByCodCliente(Integer codCliente);
+
 }
