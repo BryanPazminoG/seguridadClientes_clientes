@@ -1,14 +1,24 @@
 package com.banquito.core.banking.seguridadcliente.domain;
 
+import java.util.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.persistence.Version;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
-import java.util.Date;
+
+
 @Table(name="ClienteVista")
 @Entity
-@Getter
-@Setter
+@Getter @Setter
 public class ClienteVista {
     @Id
     @ManyToOne
@@ -34,8 +44,54 @@ public class ClienteVista {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaUltimaModificacion;
 
-    @Column(name = "VERSION", nullable = false)
+    @Version
     private Long version;
 
-    // Getters y setters
+    public ClienteVista() {
+    }
+
+    public ClienteVista(Cliente cliente, Vista vista, String estado, Long intentosError, Date fechaCreacion,
+            Date fechaUltimaModificacion, Long version) {
+        this.cliente = cliente;
+        this.vista = vista;
+        this.estado = estado;
+        this.intentosError = intentosError;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaUltimaModificacion = fechaUltimaModificacion;
+        this.version = version;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        ClienteVista other = (ClienteVista) obj;
+        if (cliente == null) {
+            if (other.cliente != null)
+                return false;
+        } else if (!cliente.equals(other.cliente))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "ClienteVista [cliente=" + cliente + ", vista=" + vista + ", estado=" + estado + ", intentosError="
+                + intentosError + ", fechaCreacion=" + fechaCreacion + ", fechaUltimaModificacion="
+                + fechaUltimaModificacion + ", version=" + version + "]";
+    }
+
+    
 }

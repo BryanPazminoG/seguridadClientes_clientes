@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class VistaService {
 
-    private VistaRepository vistaRepository;
+    private final VistaRepository vistaRepository;
 
     public VistaService(VistaRepository vistaRepository) {
         this.vistaRepository = vistaRepository;
