@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
@@ -20,11 +19,15 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
-// @CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class MailController {
-  @Autowired
-  private JavaMailSender mail;
+
+  private final JavaMailSender mail;
+
+  public MailController(JavaMailSender mail) {
+    this.mail = mail;
+  }
 
   @PostMapping("enviarCorreo")
   public ResponseEntity<?> enviarcorreo(@RequestParam("destino") String destino,

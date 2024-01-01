@@ -14,11 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-
-import jakarta.transaction.Transactional;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -39,7 +35,6 @@ public class ClienteController {
         return clienteService.auntenticar(usuario, contrasena);
     }
 
-    @Transactional
     @PostMapping("/crear")
     public ResponseEntity<Cliente> crearCliente(@RequestBody Cliente nuevoCliente) {
         Cliente clienteCreado = clienteService.crearCliente(nuevoCliente);
@@ -60,6 +55,12 @@ public class ClienteController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PutMapping("/actualizar-mfa/{idCliente}/{nuevoValorMFA}")
+    public ResponseEntity<String> actualizarMFA(@PathVariable Integer idCliente, @PathVariable String nuevoValorMFA) {
+        clienteService.actualizarAtributosCliente(idCliente, nuevoValorMFA);
+        return new ResponseEntity<>("MFA actualizado correctamente", HttpStatus.OK);
     }
 
 
