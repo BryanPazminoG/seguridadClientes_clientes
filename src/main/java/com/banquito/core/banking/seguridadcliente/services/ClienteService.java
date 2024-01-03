@@ -39,8 +39,28 @@ public class ClienteService {
         if (clienteOptional.isPresent()) {
             Cliente cliente = clienteOptional.get();
             cliente.setMfa(codigoMfa);
-
             clienteRepository.save(cliente); 
         }
     }
+
+    @Transactional
+    public boolean actualizarContrasena(Integer idCliente, String contrasenaAntigua, String nuevaContrasena) {
+        Optional<Cliente> clienteOptional = clienteRepository.findById(idCliente);
+
+        if (clienteOptional.isPresent()) {
+            Cliente cliente = clienteOptional.get();
+            String contrasenaAlmacenada = cliente.getContrasena();
+
+            if (contrasenaAlmacenada.equals(contrasenaAntigua)) {
+                cliente.setContrasena(nuevaContrasena); 
+                clienteRepository.save(cliente);
+                return true; 
+            } else {
+                return false; 
+            }
+        }
+        return false; 
+    }
+
+
 }
