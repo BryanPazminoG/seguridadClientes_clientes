@@ -42,7 +42,7 @@ public class MailController {
           MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
           StandardCharsets.UTF_8.name());
       helper.setTo(destino);
-      helper.setFrom("eddyt1999@gmail.com");
+      helper.setFrom("banquitoG1@gmail.com");
       helper.setSubject("CODIGO VERIFICACION BANQUITO");
 
       String templatePath = "templates/mailTemplate.html";
