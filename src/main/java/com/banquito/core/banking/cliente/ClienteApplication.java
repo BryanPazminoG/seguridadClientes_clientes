@@ -1,13 +1,13 @@
-package com.banquito.core.banking.seguridadcliente;
+package com.banquito.core.banking.cliente;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SeguridadclienteApplication {
+public class ClienteApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SeguridadclienteApplication.class, args);
+		SpringApplication.run(ClienteApplication.class, args);
 	}
 
 }
