@@ -1,7 +1,6 @@
 package com.banquito.core.banking.cliente.service;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +32,6 @@ public class ClienteService {
     public void crear(ClienteDTO dto) {
         try {
             Cliente cliente = ClienteBuilder.toCliente(dto);
-
             cliente.setCodCliente(new DigestUtils("MD2").digestAsHex(cliente.toString()));
             cliente.setContrasena(new DigestUtils("MD5").digestAsHex(dto.getContrasena()));
             cliente.setFechaUltimaModificacion(LocalDateTime.now());
@@ -47,11 +45,11 @@ public class ClienteService {
 
     public void actualizar(ClienteDTO dto) {
         try {
-
+            log.info("Se va a buscar el cliente", dto.getUsuario());
             Optional<Cliente> clienteOpt = this.clienteRepository.findById(dto.getCodCliente());
 
             if (clienteOpt.isPresent()) {
-
+                log.info("Cliente encontrado.");
                 Cliente clienteTmp = ClienteBuilder.toCliente(dto);
                 Cliente cliente = new Cliente();
                 cliente = clienteOpt.get();
@@ -94,7 +92,9 @@ public class ClienteService {
 
     public Boolean validarCredenciales(String usuario, String contrasena) {
         try {
+            log.info("Validando credenciales de usuario : {}",usuario);
             String contrasenaHash = new DigestUtils("MD5").digestAsHex(contrasena);
+            log.info("Contrasena cifrada");
             Cliente cliente = this.clienteRepository.findByUsuarioAndContrasena(usuario, contrasenaHash);
             if (cliente != null) {
                 return true;

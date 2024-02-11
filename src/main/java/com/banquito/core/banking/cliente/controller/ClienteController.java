@@ -30,17 +30,18 @@ public class ClienteController {
         this.clienteService = clienteService;
     }
 
-    @GetMapping("/clientes")
+    @GetMapping
     public ResponseEntity<List<Cliente>> buscarTodas() {
         log.info("Obteniendo listado de todos los clientes");
         return ResponseEntity.ok(clienteService.listarTodo());
     }
 
-    @PostMapping("/nuevo")
+    @PostMapping
     public ResponseEntity<Void> crear(@RequestBody ClienteDTO cliente) {
-        log.info("Se va a crear el cliente: {}", cliente);
+        log.info("Se va a crear el cliente: {}", cliente.getUsuario());
         try {
             this.clienteService.crear(cliente);
+            log.info("Se creo exitosamente el usuario");
             return ResponseEntity.noContent().build();
         } catch (RuntimeException rte) {
             log.error("Error al crear el cliente", rte);
@@ -48,11 +49,12 @@ public class ClienteController {
         }
     }
 
-    @PutMapping("/nueva-contrasena")
+    @PutMapping
     public ResponseEntity<Void> actualizarContrasena(@RequestBody ClienteDTO cliente) {
         try {
             log.info("Se va a actualizar la contrasena de cliente: {}", cliente.getUsuario());
             clienteService.actualizarContrasena(cliente);
+            log.info("Contrasena actualizada correctamente");
             return ResponseEntity.ok().build();
         } catch (RuntimeException rte) {
             return ResponseEntity.badRequest().build();
@@ -65,6 +67,7 @@ public class ClienteController {
         log.info("Se va a iniciar sesion: {}", clienteDTO.getUsuario());
         try {
             if (this.clienteService.validarCredenciales(clienteDTO.getUsuario(),clienteDTO.getContrasena())) {
+                log.info("Usuario y contrasena correctos");
                 return ResponseEntity.ok().build();
             }else{
                 return ResponseEntity.badRequest().build();
