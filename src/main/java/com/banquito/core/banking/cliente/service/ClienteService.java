@@ -90,23 +90,20 @@ public class ClienteService {
         }
     }
 
-    public Boolean validarCredenciales(String usuario, String contrasena) {
+    public Cliente validarCredenciales(String usuario, String contrasena) {
         try {
             log.info("Validando credenciales de usuario : {}",usuario);
             String contrasenaHash = new DigestUtils("MD5").digestAsHex(contrasena);
             log.info("Contrasena cifrada");
             Cliente cliente = this.clienteRepository.findByUsuarioAndContrasena(usuario, contrasenaHash);
             if (cliente != null) {
-                return true;
+                return cliente;
             } else {
                 throw new RuntimeException("Credenciales incorrectas");
             }
-
         } catch (Exception e) {
-            // TODO: handle exception
             throw new RuntimeException("Credenciales incorrectas");
         }
-
     }
 
 }

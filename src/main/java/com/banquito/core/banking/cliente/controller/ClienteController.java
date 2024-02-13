@@ -64,12 +64,13 @@ public class ClienteController {
 
 
     @PostMapping("/sesion")
-    public ResponseEntity<Boolean> iniciar (@RequestBody ClienteDTO clienteDTO) {
+    public ResponseEntity<Cliente> iniciar (@RequestBody ClienteDTO clienteDTO) {
         log.info("Se va a iniciar sesion: {}", clienteDTO.getUsuario());
+        Cliente cliente = this.clienteService.validarCredenciales(clienteDTO.getUsuario(),clienteDTO.getContrasena());
         try {
-            if (this.clienteService.validarCredenciales(clienteDTO.getUsuario(),clienteDTO.getContrasena())) {
+            if (cliente != null) {
                 log.info("Usuario y contrasena correctos");
-                return ResponseEntity.ok().build();
+                return ResponseEntity.ok(cliente);
             }else{
                 return ResponseEntity.badRequest().build();
             }

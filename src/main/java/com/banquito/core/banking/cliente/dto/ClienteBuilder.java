@@ -1,13 +1,12 @@
 package com.banquito.core.banking.cliente.dto;
 
-import java.time.LocalDateTime;
-
 import com.banquito.core.banking.cliente.domain.Cliente;
 
 public class ClienteBuilder {
 
     public static Cliente toCliente(ClienteDTO dto) {
         Cliente cliente = new Cliente();
+        cliente.setCodCliente(dto.getCodCliente());
         cliente.setUsuario(dto.getUsuario());
         cliente.setContrasena(dto.getContrasena());
         cliente.setFechaCreacion(dto.getFechaCreacion());
