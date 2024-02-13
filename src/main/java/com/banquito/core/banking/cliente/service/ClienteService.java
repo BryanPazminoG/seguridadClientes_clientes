@@ -50,7 +50,6 @@ public class ClienteService {
 
             if (clienteOpt.isPresent()) {
                 log.info("Cliente encontrado.");
-                Cliente clienteTmp = ClienteBuilder.toCliente(dto);
                 Cliente cliente = new Cliente();
                 cliente = clienteOpt.get();
                 log.info("Se va a actualizar el cliente: ", cliente);

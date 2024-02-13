@@ -1,7 +1,6 @@
 package com.banquito.core.banking.cliente.domain;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 
 import org.springframework.data.annotation.Id;
@@ -10,8 +9,6 @@ import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
-import com.mongodb.lang.NonNull;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
