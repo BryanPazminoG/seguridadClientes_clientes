@@ -32,7 +32,7 @@ public class ClienteService {
     public void crear(ClienteDTO dto) {
         try {
             Cliente cliente = ClienteBuilder.toCliente(dto);
-            cliente.setCodCliente(new DigestUtils("MD2").digestAsHex(cliente.toString()));
+            cliente.setCodCliente(dto.getCodCliente());
             cliente.setContrasena(new DigestUtils("MD5").digestAsHex(dto.getContrasena()));
             cliente.setFechaUltimaModificacion(LocalDateTime.now());
             cliente.setFechaCreacion(LocalDateTime.now());
