@@ -20,9 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
-@CrossOrigin(origins = {"http://localhost:4200", "http://34.173.161.134:4201", "http://34.176.205.203:4202", 
-                        "http://34.176.102.118:4203", "http://34.176.137.180:4204"})
-//@CrossOrigin(origins = "", allowedHeaders = "", methods = {RequestMethod.GET, RequestMethod.POST})
+@CrossOrigin(origins = { "http://localhost:4200", "http://34.173.161.134:4201", "http://34.176.205.203:4202",
+    "http://34.176.102.118:4203", "http://34.176.137.180:4204" })
+// @CrossOrigin(origins = "", allowedHeaders = "", methods = {RequestMethod.GET,
+// RequestMethod.POST})
 @RestController
 @RequestMapping("/api/v1/correo")
 public class MailSendController {
@@ -33,7 +34,7 @@ public class MailSendController {
     this.mail = mail;
   }
 
-  @PostMapping("/enviar")
+  @PostMapping
   public ResponseEntity<?> enviarcorreo(@RequestParam("destino") String destino,
       @RequestParam("codigo") String codigo,
       @RequestParam("nombre") String nombre) {
