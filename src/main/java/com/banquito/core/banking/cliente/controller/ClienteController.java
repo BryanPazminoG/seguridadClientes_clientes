@@ -9,20 +9,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.banquito.core.banking.cliente.domain.Cliente;
 import com.banquito.core.banking.cliente.dto.ClienteDTO;
 import com.banquito.core.banking.cliente.service.ClienteService;
+
 import lombok.extern.slf4j.Slf4j;
 
 
 
 @Slf4j
 @RestController
-//@CrossOrigin(origins = "http://localhost:4200")
-@CrossOrigin(origins = "", allowedHeaders = "", methods = {RequestMethod.GET, RequestMethod.POST})
+@CrossOrigin(origins = {"http://localhost:4200", "http://34.173.161.134:4201", "http://34.176.205.203:4202", 
+                        "http://34.176.102.118:4203", "http://34.176.137.180:4204"})
+//@CrossOrigin(origins = "", allowedHeaders = "", methods = {RequestMethod.GET, RequestMethod.POST})
 @RequestMapping("/api/v1/seguridad-cliente")
 
 public class ClienteController {
