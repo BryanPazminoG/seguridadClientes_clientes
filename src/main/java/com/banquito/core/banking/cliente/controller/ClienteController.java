@@ -21,8 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200", "http://34.173.161.134:4201", "http://34.176.205.203:4202", 
-                        "http://34.176.102.118:4203", "http://34.176.137.180:4204"})
+@CrossOrigin(origins = {"http://localhost:4200"})
 //@CrossOrigin(origins = "", allowedHeaders = "", methods = {RequestMethod.GET, RequestMethod.POST})
 @RequestMapping("/api/v1/seguridad-cliente")
 
@@ -42,7 +41,7 @@ public class ClienteController {
 
     @PostMapping
     public ResponseEntity<Void> crear(@RequestBody ClienteDTO cliente) {
-        log.info("Se va a crear el cliente: {}", cliente.getUsuario());
+        log.info("Se va a crear el cliente: {}", cliente.getNombreUsuario());
         try {
             this.clienteService.crear(cliente);
             log.info("Se creo exitosamente el usuario");
@@ -56,7 +55,7 @@ public class ClienteController {
     @PutMapping
     public ResponseEntity<Void> actualizarContrasena(@RequestBody ClienteDTO cliente) {
         try {
-            log.info("Se va a actualizar la contrasena de cliente: {}", cliente.getUsuario());
+            log.info("Se va a actualizar la contrasena de cliente: {}", cliente.getNombreUsuario());
             clienteService.actualizarContrasena(cliente);
             log.info("Contrasena actualizada correctamente");
             return ResponseEntity.ok().build();
@@ -65,11 +64,10 @@ public class ClienteController {
         }
     }
 
-
     @PostMapping("/sesion")
     public ResponseEntity<Cliente> iniciar (@RequestBody ClienteDTO clienteDTO) {
-        log.info("Se va a iniciar sesion: {}", clienteDTO.getUsuario());
-        Cliente cliente = this.clienteService.validarCredenciales(clienteDTO.getUsuario(),clienteDTO.getContrasena());
+        log.info("Se va a iniciar sesion: {}", clienteDTO.getNombreUsuario());
+        Cliente cliente = this.clienteService.validarCredenciales(clienteDTO.getNombreUsuario(),clienteDTO.getClave());
         try {
             if (cliente != null) {
                 log.info("Usuario y contrasena correctos");

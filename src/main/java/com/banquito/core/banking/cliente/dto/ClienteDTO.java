@@ -5,15 +5,23 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+import com.banquito.core.banking.cliente.domain.CodigoVerificacion;
+import com.banquito.core.banking.cliente.domain.Permisos;
+
 @Data
 @Builder
 public class ClienteDTO {
 
     private String codCliente;
-    private String usuario;
-    private String contrasena;
+    private String nombreUsuario;
+    private String clave;
+    private String estado;
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaUltimaModificacion;
+    private LocalDateTime fechaUltimoAcceso;
+    private String tipoCliente;
+    private CodigoVerificacion codigoVerificacion;
+    private Permisos permisos;
 
 
     @Override
@@ -43,8 +51,10 @@ public class ClienteDTO {
 
     @Override
     public String toString() {
-        return "ClienteDTO [codCliente=" + codCliente + ", usuario=" + usuario + ", contrasena=" + contrasena
-                + ", fechaCreacion=" + fechaCreacion + ", fechaUltimaModificacion=" + fechaUltimaModificacion + "]";
+        return "ClienteDTO [codCliente=" + codCliente + ", nombreUsuario=" + nombreUsuario + ", clave=" + clave
+                + ", estado=" + estado + ", fechaCreacion=" + fechaCreacion + ", fechaUltimaModificacion="
+                + fechaUltimaModificacion + ", fechaUltimoAcceso=" + fechaUltimoAcceso + ", tipoCliente=" + tipoCliente
+                + ", codigoVerificacion=" + codigoVerificacion + ", permisos=" + permisos + "]";
     }
 
 }

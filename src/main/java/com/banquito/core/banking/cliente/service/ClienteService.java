@@ -33,9 +33,15 @@ public class ClienteService {
         try {
             Cliente cliente = ClienteBuilder.toCliente(dto);
             cliente.setCodCliente(dto.getCodCliente());
-            cliente.setContrasena(new DigestUtils("MD5").digestAsHex(dto.getContrasena()));
+            cliente.setClave(new DigestUtils("MD5").digestAsHex(dto.getClave()));
             cliente.setFechaUltimaModificacion(LocalDateTime.now());
             cliente.setFechaCreacion(LocalDateTime.now());
+            cliente.setNombreUsuario(dto.getNombreUsuario());
+            cliente.setEstado(dto.getEstado());
+            cliente.setFechaUltimoAcceso((LocalDateTime.now()));
+            cliente.setTipoCliente(dto.getTipoCliente());
+            cliente.setCodigoVerificacion(dto.getCodigoVerificacion());
+            cliente.setPermisos(dto.getPermisos());
             this.clienteRepository.save(cliente);
             log.info("Se creo el cliente: {}", cliente);
         } catch (Exception e) {
@@ -45,7 +51,7 @@ public class ClienteService {
 
     public void actualizar(ClienteDTO dto) {
         try {
-            log.info("Se va a buscar el cliente", dto.getUsuario());
+            log.info("Se va a buscar el cliente", dto.getNombreUsuario());
             Optional<Cliente> clienteOpt = this.clienteRepository.findById(dto.getCodCliente());
 
             if (clienteOpt.isPresent()) {
@@ -65,18 +71,18 @@ public class ClienteService {
     @Transactional
     public Boolean actualizarContrasena(ClienteDTO dto) {
         try {
-            log.info("Se va a buscar el cliente: {}", dto.getUsuario());
-            Cliente clienteAux = this.clienteRepository.findByUsuario(dto.getUsuario());
+            log.info("Se va a buscar el cliente: {}", dto.getNombreUsuario());
+            Cliente clienteAux = this.clienteRepository.findByNombreUsuario(dto.getNombreUsuario());
             if (clienteAux != null) {
                 log.info("Cliente encontrado");
-                dto.setContrasena(new DigestUtils("MD5").digestAsHex(dto.getContrasena()));
+                dto.setClave(new DigestUtils("MD5").digestAsHex(dto.getClave()));
                 log.info("Contrasena encriptada");
                 Cliente clienteTmp = ClienteBuilder.toCliente(dto);
                 Cliente cliente = ClienteBuilder.copyCliente(clienteTmp, clienteAux);
                 cliente.setFechaUltimaModificacion(LocalDateTime.now());
                 log.info("Guardando informacion");
                 this.clienteRepository.save(cliente);
-                log.info("Se actualizo la contrasena del usuario: {}", cliente.getUsuario());
+                log.info("Se actualizo la contrasena del usuario: {}", cliente.getNombreUsuario());
                 return true;
             }
             else{
@@ -89,12 +95,12 @@ public class ClienteService {
         }
     }
 
-    public Cliente validarCredenciales(String usuario, String contrasena) {
+    public Cliente validarCredenciales(String nombreUsuario, String clave) {
         try {
-            log.info("Validando credenciales de usuario : {}",usuario);
-            String contrasenaHash = new DigestUtils("MD5").digestAsHex(contrasena);
+            log.info("Validando credenciales de usuario : {}",nombreUsuario);
+            String contrasenaHash = new DigestUtils("MD5").digestAsHex(clave);
             log.info("Contrasena cifrada");
-            Cliente cliente = this.clienteRepository.findByUsuarioAndContrasena(usuario, contrasenaHash);
+            Cliente cliente = this.clienteRepository.findByNombreUsuarioAndClave(nombreUsuario, contrasenaHash);
             if (cliente != null) {
                 return cliente;
             } else {

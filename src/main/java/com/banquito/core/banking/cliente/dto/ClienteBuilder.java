@@ -7,20 +7,24 @@ public class ClienteBuilder {
     public static Cliente toCliente(ClienteDTO dto) {
         Cliente cliente = new Cliente();
         cliente.setCodCliente(dto.getCodCliente());
-        cliente.setUsuario(dto.getUsuario());
-        cliente.setContrasena(dto.getContrasena());
+        cliente.setNombreUsuario(dto.getNombreUsuario());
+        cliente.setClave(dto.getClave());
+        cliente.setEstado(dto.getEstado());
         cliente.setFechaCreacion(dto.getFechaCreacion());
-
+        cliente.setFechaUltimoAcceso(dto.getFechaUltimoAcceso());
+        cliente.setTipoCliente(dto.getTipoCliente());
+        cliente.setCodigoVerificacion(dto.getCodigoVerificacion());
+        cliente.setPermisos(dto.getPermisos());
         return cliente;
     }
     public static Cliente copyCliente(Cliente fuente, Cliente destino){
 
-        if (fuente.getUsuario() != null) {
-            destino.setUsuario(fuente.getUsuario());
+        if (fuente.getNombreUsuario() != null) {
+            destino.setNombreUsuario(fuente.getNombreUsuario());
         }
     
-        if (fuente.getContrasena() != null) {
-            destino.setContrasena(fuente.getContrasena());
+        if (fuente.getClave() != null) {
+            destino.setClave(fuente.getClave());
         }
     
         if (fuente.getFechaCreacion() != null) {
@@ -29,6 +33,26 @@ public class ClienteBuilder {
     
         if (fuente.getCodCliente() != null) {
             destino.setCodCliente(fuente.getCodCliente());
+        }
+
+        if (fuente.getEstado() != null) {
+            destino.setEstado(fuente.getEstado());
+        }
+
+        if (fuente.getFechaUltimoAcceso() != null) {
+            destino.setFechaUltimoAcceso(fuente.getFechaUltimoAcceso());
+        }
+
+        if (fuente.getTipoCliente() != null) {
+            destino.setTipoCliente(fuente.getTipoCliente());
+        }
+
+        if (fuente.getCodigoVerificacion() != null) {
+            destino.setCodigoVerificacion(fuente.getCodigoVerificacion());
+        }
+
+        if (fuente.getPermisos() != null) {
+            destino.setPermisos(fuente.getPermisos());
         }
 
         return destino;

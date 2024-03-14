@@ -1,7 +1,7 @@
 package com.banquito.core.banking.cliente.domain;
 
 import java.time.LocalDateTime;
-
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.TypeAlias;
@@ -27,11 +27,14 @@ public class Cliente {
     @Field  ("codCliente")
     private String codCliente;
     
-    @Field  ("usuario")
-    private String usuario;
+    @Field  ("nombreUsuario")
+    private String nombreUsuario;
 
-    @Field  ("contrasena")
-    private String contrasena;
+    @Field  ("clave")
+    private String clave;
+
+    @Field ("estado")
+    private String estado;
 
     @Field  ("fechaCreacion")
     private LocalDateTime fechaCreacion;
@@ -39,9 +42,20 @@ public class Cliente {
     @Field  ("fechaUltimaModificacion")
     private LocalDateTime fechaUltimaModificacion;
 
+    @Field  ("fechaUltimoAcceso")
+    private LocalDateTime fechaUltimoAcceso;
+
+    @Field ("tipoCliente")
+    private String tipoCliente;
+
+    @Field ("codigoVerificacion")
+    private CodigoVerificacion codigoVerificacion;
+
+    @Field("permisos")
+    private Permisos permisos;
+
     @Version
     private Long version;
-
 
     public Cliente(String codCliente) {
         this.codCliente = codCliente;
@@ -61,7 +75,7 @@ public class Cliente {
             return true;
         if (obj == null)
             return false;
-        if (getClass() != obj.getClass())
+        if (getClass() != obj.getClass())   
             return false;
         Cliente other = (Cliente) obj;
         if (codCliente == null) {
@@ -74,9 +88,11 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente [codCliente=" + codCliente + ", usuario=" + usuario + ", contrasena=" + contrasena
-                + ", fechaCreacion=" + fechaCreacion + ", fechaUltimaModificacion=" + fechaUltimaModificacion
-                + ", version=" + version + "]";
+        return "Cliente [id=" + id + ", codCliente=" + codCliente + ", nombreUsuario=" + nombreUsuario + ", clave="
+                + clave + ", estado=" + estado + ", fechaCreacion=" + fechaCreacion + ", fechaUltimaModificacion="
+                + fechaUltimaModificacion + ", fechaUltimoAcceso=" + fechaUltimoAcceso + ", tipoCliente=" + tipoCliente
+                + ", codigoVerificacion=" + codigoVerificacion + ", permisos=" + permisos + ", version=" + version
+                + "]";
     }
 
 }
