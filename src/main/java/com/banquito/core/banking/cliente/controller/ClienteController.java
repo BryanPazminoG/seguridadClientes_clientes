@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.banquito.core.banking.cliente.domain.Cliente;
@@ -78,6 +80,18 @@ public class ClienteController {
             
         } catch (RuntimeException rte) {
             log.error("Error al iniciar sesion", rte);
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PatchMapping
+    public ResponseEntity<Void> actualizarCodigoVerificacion(@RequestParam("codCliente") String codCliente) {
+        try {
+            log.info("Se va a actualizar el codigo de verificacion del cliente: {}", codCliente);
+            clienteService.actualizarCodigoVerificacion(codCliente);
+            log.info("Codigo de verificacion actualizado correctamente");
+            return ResponseEntity.ok().build();
+        } catch (RuntimeException rte) {
             return ResponseEntity.badRequest().build();
         }
     }

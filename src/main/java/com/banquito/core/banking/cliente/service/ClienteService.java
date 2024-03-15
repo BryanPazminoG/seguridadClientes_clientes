@@ -10,6 +10,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import com.banquito.core.banking.cliente.dao.ClienteRepository;
 import com.banquito.core.banking.cliente.domain.Cliente;
+import com.banquito.core.banking.cliente.domain.CodigoVerificacion;
 import com.banquito.core.banking.cliente.dto.ClienteBuilder;
 import com.banquito.core.banking.cliente.dto.ClienteDTO;
 
@@ -108,6 +109,39 @@ public class ClienteService {
             }
         } catch (Exception e) {
             throw new RuntimeException("Credenciales incorrectas");
+        }
+    }
+
+    public void actualizarCodigoVerificacion(String codCliente) {
+        try {
+            log.info("Actualizando codigo de verificacio");
+            Optional<Cliente> cliente = this.clienteRepository.findByCodCliente(codCliente);
+            if (cliente.isPresent()) {
+                log.info("Cliente encontrado.");
+                log.info("Generando codigo de verificacion");
+                CodigoVerificacion codigoVerificacion = new CodigoVerificacion();
+
+                String banco = "1234567890";
+                String codigoGenerado = "";
+                for (int x = 0; x < 6; x++) {
+                    codigoGenerado += banco.charAt((int) (Math.random() * (9 - 0 + 1) + 0));
+                }
+
+                log.info("CODIGO GENERADO ============== {}", codigoGenerado);
+
+                codigoVerificacion.setCodigo(codigoGenerado);
+                codigoVerificacion.setEstado("ACT");
+                codigoVerificacion.setFechaCreacion(LocalDateTime.now());
+
+                cliente.get().setCodigoVerificacion(codigoVerificacion);
+                this.clienteRepository.save(cliente.get());
+                log.info("Codigo de verificacion actualizado del cliente {}", codCliente);
+            } else {
+                log.info("CLiente no encontrado");
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException("Error al actualizar el cliente");
         }
     }
 
