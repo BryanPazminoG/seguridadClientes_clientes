@@ -51,7 +51,7 @@ public class ClienteControllerTest {
         mockMvcTipoCliente.perform(MockMvcRequestBuilders
                 .get("/api/v1/seguridad-cliente")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isOk());
 
     }
 
