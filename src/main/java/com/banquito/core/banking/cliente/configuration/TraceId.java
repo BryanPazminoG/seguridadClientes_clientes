@@ -1,4 +1,4 @@
-package com.banquito.core.baking.cuenta.configuration;
+package com.banquito.core.banking.cliente.configuration;
 
 import java.util.UUID;
 
