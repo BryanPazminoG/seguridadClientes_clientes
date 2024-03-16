@@ -1,0 +1,13 @@
+com\banquito\core\banking\cliente\domain\CodigoVerificacion.class
+com\banquito\core\banking\cliente\ClienteApplication.class
+com\banquito\core\banking\cliente\controller\MailSendController.class
+com\banquito\core\banking\cliente\service\ClienteService.class
+com\banquito\core\banking\cliente\domain\Cliente.class
+com\banquito\core\banking\cliente\dao\ClienteRepository.class
+com\banquito\core\banking\cliente\dto\ClienteBuilder.class
+com\banquito\core\banking\cliente\dto\ClienteDTO.class
+com\banquito\core\banking\cliente\controller\ClienteController.class
+com\banquito\core\banking\cliente\domain\Permisos.class
+com\banquito\core\banking\cliente\configuration\WebMvcConfig.class
+com\banquito\core\banking\cliente\configuration\TraceId.class
+com\banquito\core\banking\cliente\dto\ClienteDTO$ClienteDTOBuilder.class
