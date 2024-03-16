@@ -17,11 +17,11 @@ import com.banquito.core.banking.cliente.domain.Cliente;
 import com.banquito.core.banking.cliente.dto.ClienteDTO;
 import com.banquito.core.banking.cliente.service.ClienteService;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 
 
-@Slf4j
+@Log4j2
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
 //@CrossOrigin(origins = "", allowedHeaders = "", methods = {RequestMethod.GET, RequestMethod.POST})

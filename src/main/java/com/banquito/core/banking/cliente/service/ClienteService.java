@@ -4,9 +4,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.apache.commons.codec.digest.DigestUtils;
 
 import com.banquito.core.banking.cliente.dao.ClienteRepository;
 import com.banquito.core.banking.cliente.domain.Cliente;
@@ -14,9 +14,9 @@ import com.banquito.core.banking.cliente.domain.CodigoVerificacion;
 import com.banquito.core.banking.cliente.dto.ClienteBuilder;
 import com.banquito.core.banking.cliente.dto.ClienteDTO;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
-@Slf4j
+@Log4j2
 @Service
 public class ClienteService {
     public final ClienteRepository clienteRepository;
