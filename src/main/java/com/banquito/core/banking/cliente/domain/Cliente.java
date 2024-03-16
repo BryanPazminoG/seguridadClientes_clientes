@@ -24,10 +24,10 @@ public class Cliente {
     private String id;
     
     @Indexed(unique = true)
-    @Field  ("codCliente")
+    @Field  ("cod_cliente")
     private String codCliente;
     
-    @Field  ("nombreUsuario")
+    @Field  ("nombre_usuario")
     private String nombreUsuario;
 
     @Field  ("clave")
@@ -36,19 +36,19 @@ public class Cliente {
     @Field ("estado")
     private String estado;
 
-    @Field  ("fechaCreacion")
+    @Field  ("fecha_creacion")
     private LocalDateTime fechaCreacion;
 
-    @Field  ("fechaUltimaModificacion")
+    @Field  ("fecha_ultima_modificacion")
     private LocalDateTime fechaUltimaModificacion;
 
-    @Field  ("fechaUltimoAcceso")
+    @Field  ("fecha_ultimo_acceso")
     private LocalDateTime fechaUltimoAcceso;
 
-    @Field ("tipoCliente")
+    @Field ("tipo_cliente")
     private String tipoCliente;
 
-    @Field ("codigoVerificacion")
+    @Field ("codigo_verificacion")
     private CodigoVerificacion codigoVerificacion;
 
     @Field("permisos")
