@@ -1,12 +1,12 @@
-c:\Users\eddyt\Documents\ESPE\ArquitecturaSoftware\PROYECTO\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\configuration\TraceId.java
-c:\Users\eddyt\Documents\ESPE\ArquitecturaSoftware\PROYECTO\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\dto\ClienteBuilder.java
-c:\Users\eddyt\Documents\ESPE\ArquitecturaSoftware\PROYECTO\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\dto\ClienteDTO.java
-c:\Users\eddyt\Documents\ESPE\ArquitecturaSoftware\PROYECTO\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\ClienteApplication.java
-c:\Users\eddyt\Documents\ESPE\ArquitecturaSoftware\PROYECTO\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\controller\ClienteController.java
-c:\Users\eddyt\Documents\ESPE\ArquitecturaSoftware\PROYECTO\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\domain\CodigoVerificacion.java
-c:\Users\eddyt\Documents\ESPE\ArquitecturaSoftware\PROYECTO\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\domain\Permisos.java
-c:\Users\eddyt\Documents\ESPE\ArquitecturaSoftware\PROYECTO\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\controller\MailSendController.java
-c:\Users\eddyt\Documents\ESPE\ArquitecturaSoftware\PROYECTO\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\domain\Cliente.java
-c:\Users\eddyt\Documents\ESPE\ArquitecturaSoftware\PROYECTO\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\dao\ClienteRepository.java
-c:\Users\eddyt\Documents\ESPE\ArquitecturaSoftware\PROYECTO\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\service\ClienteService.java
-c:\Users\eddyt\Documents\ESPE\ArquitecturaSoftware\PROYECTO\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\configuration\WebMvcConfig.java
+c:\ARQUI\PROYECTO\TERCER PARCIAL\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\domain\Permisos.java
+c:\ARQUI\PROYECTO\TERCER PARCIAL\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\dto\ClienteDTO.java
+c:\ARQUI\PROYECTO\TERCER PARCIAL\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\ClienteApplication.java
+c:\ARQUI\PROYECTO\TERCER PARCIAL\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\controller\ClienteController.java
+c:\ARQUI\PROYECTO\TERCER PARCIAL\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\domain\Cliente.java
+c:\ARQUI\PROYECTO\TERCER PARCIAL\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\dao\ClienteRepository.java
+c:\ARQUI\PROYECTO\TERCER PARCIAL\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\controller\MailSendController.java
+c:\ARQUI\PROYECTO\TERCER PARCIAL\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\service\ClienteService.java
+c:\ARQUI\PROYECTO\TERCER PARCIAL\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\configuration\WebMvcConfig.java
+c:\ARQUI\PROYECTO\TERCER PARCIAL\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\dto\ClienteBuilder.java
+c:\ARQUI\PROYECTO\TERCER PARCIAL\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\configuration\TraceId.java
+c:\ARQUI\PROYECTO\TERCER PARCIAL\seguridadClientes_clientes\src\main\java\com\banquito\core\banking\cliente\domain\CodigoVerificacion.java

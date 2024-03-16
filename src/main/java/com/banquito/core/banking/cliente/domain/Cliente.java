@@ -18,7 +18,7 @@ import lombok.Setter;
 @Setter
 @TypeAlias("Cliente")
 @NoArgsConstructor
-@Document(collection = "segclientes")
+@Document(collection = "SEG_CLIENTE")
 public class Cliente {
     @Id
     private String id;
